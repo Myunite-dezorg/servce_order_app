@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 import uuid
 
-class AbstractOrder(models.Model):
+class AbstractService(models.Model):
     ORDER_STATE = [
         ('loading', 'Loading'),
         ('offloading', 'Offloading'),

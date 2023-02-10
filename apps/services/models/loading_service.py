@@ -15,10 +15,11 @@ class LoadingService(AbstractOrder):
     customer = models.ForeignKey(User, verbose_name=_("Customer service"), on_delete=models.CASCADE)
     service_name = models.CharField(
         _("Service name"), max_length=50, blank=False, null=False)
+    flight = models.CharField(_("Flight"), max_length=6)
     description = models.TextField(null=True, blank=True)
     
     def __str__(self):
-        return "[%s] %s" % (self.order_number, self.service_name)
+        return "[%s] %s" % (self.order_number, self.service_name, self.flight)
 
 
     def get_absolute_url(self):
