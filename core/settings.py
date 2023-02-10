@@ -38,7 +38,14 @@ if RENDER_EXTERNAL_HOSTNAME:
 
 # Application definition
 
-INSTALLED_APPS = [
+PROJECTS_APPS = [
+    "home",
+    'apps.profiles',
+    'apps.companies',
+    'apps.services',
+]
+
+DJANGO_APPS = [
     'admin_soft.apps.AdminSoftDashboardConfig',
     "django.contrib.admin",
     "django.contrib.auth",
@@ -46,12 +53,22 @@ INSTALLED_APPS = [
     "django.contrib.sessions",
     "django.contrib.messages",
     "django.contrib.staticfiles",
-
-    "home",
-    'apps.profiles',
-    'apps.companies',
-    'apps.services',
 ]
+
+THIRDPARTY_APPS = [
+    'mptt',
+    'tinymce',
+    'phone_field',
+    'import_export',
+    "django_tables2",
+    'crispy_forms',
+    'author',
+    'django_bookmark_base',
+    "taggit", 
+
+]
+
+INSTALLED_APPS = DJANGO_APPS + THIRDPARTY_APPS + PROJECTS_APPS
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -152,6 +169,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+
+MEDIA_ROOT =  os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
 
 #if not DEBUG:
 #    STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'

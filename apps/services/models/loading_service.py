@@ -5,21 +5,22 @@ from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 from django.shortcuts import reverse
 from hashlib import sha1
-from .abstract_class import AbstractOrder
+from .abstract_class import AbstractService
 
 
 logger = logging.getLogger(__name__)
 
 
-class LoadingService(AbstractOrder):
+class LoadingService(AbstractService):
     customer = models.ForeignKey(User, verbose_name=_("Customer service"), on_delete=models.CASCADE)
     service_name = models.CharField(
         _("Service name"), max_length=50, blank=False, null=False)
-    flight = models.CharField(_("Flight"), max_length=6)
+    flight = models.CharField(_("Flight"), max_length=6, default="")
     description = models.TextField(null=True, blank=True)
+    comment = models.TextField(blank=True, null=True)
     
     def __str__(self):
-        return "[%s] %s" % (self.order_number, self.service_name, self.flight)
+        return "[%s] %s" % (self.service_name, self.flight)
 
 
     def get_absolute_url(self):
