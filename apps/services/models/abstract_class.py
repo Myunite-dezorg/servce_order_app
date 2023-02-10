@@ -31,10 +31,10 @@ class AbstractOrder(models.Model):
     status = models.CharField(max_length=20, choices=ORDER_STATUS_CHOICES, default='new')
     payment_status = models.CharField(max_length=20, choices=PAYMENT_STATES, default='draft')
     cancel_reason = models.TextField(blank=True, null=True)
-    date_created = models.DateTimeField(auto_now_add=True)
-    date_updated = models.DateTimeField(auto_now=True)
-    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='orders_created')
-    modified_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='orders_modified')
+    date_created = models.DateTimeField(auto_now_add=True, editable=False)
+    date_updated = models.DateTimeField(auto_now=True, editable=False)
+    created_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='orders_created', editable=False)
+    modified_by = models.ForeignKey(User, on_delete=models.SET_NULL, null=True, related_name='orders_modified', editable=False)
 
     # other common fields
 
