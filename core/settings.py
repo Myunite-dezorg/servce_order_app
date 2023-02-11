@@ -43,6 +43,7 @@ PROJECTS_APPS = [
     'apps.profiles',
     'apps.companies',
     'apps.services',
+    'apps.stuffs',
 ]
 
 DJANGO_APPS = [
@@ -62,9 +63,11 @@ THIRDPARTY_APPS = [
     'import_export',
     "django_tables2",
     'crispy_forms',
+    "crispy_bootstrap5",
     'author',
     'django_bookmark_base',
     "taggit", 
+    'formtools',
 
 ]
 
@@ -100,6 +103,10 @@ TEMPLATES = [
         },
     },
 ]
+
+CRISPY_ALLOWED_TEMPLATE_PACKS = "bootstrap5"
+
+CRISPY_TEMPLATE_PACK = "bootstrap5"
 
 WSGI_APPLICATION = "core.wsgi.application"
 

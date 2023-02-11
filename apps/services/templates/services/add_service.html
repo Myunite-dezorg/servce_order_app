@@ -1,0 +1,25 @@
+{% extends 'layouts/base.html' %}
+{% block content %}
+<div class="container-fluid py-4">
+  <h1>Add Service Order</h1>
+  <form method="post">
+    {% csrf_token %}
+    {{ wizard.form.as_p }}
+    {% if wizard.steps.prev %}
+      <address type="submit" 
+      name="wizard_goto_step" 
+      value="{{ wizard.steps.first }}"
+      class="btn btn-outline-primary btn-sm mb-0"
+      >first</a>
+      <button type="submit" name="wizard_goto_step" value="{{ wizard.steps.prev }}">prev</button>
+    {% endif %}
+    <input type="submit" value="Next">
+    {% if wizard.steps.next %}
+      <button type="submit" name="wizard_goto_step" value="{{ wizard.steps.next }}">next</button>
+      <button type="submit" name="wizard_goto_step" value="{{ wizard.steps.last }}">last</button>
+    {% endif %}
+  </form>
+
+</div>
+ 
+{% endblock %}

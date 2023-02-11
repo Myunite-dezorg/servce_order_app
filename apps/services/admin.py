@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models.loading_service import LoadingService
+from .models.aog_service import AogService
 
-admin.site.register(LoadingService)
+admin.site.register(AogService)
